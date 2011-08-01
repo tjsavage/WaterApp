@@ -7,20 +7,22 @@
 //
 
 #import "WaterAppAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation WaterAppAppDelegate
 
 
 @synthesize window=_window;
 
-@synthesize navigationController=_navigationController;
+@synthesize navigationController=_navigationController, rootViewController = _rootViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    self.rootViewController = [[RootViewController alloc] initWithNibName:@"RootView" bundle:[NSBundle mainBundle]];
+    
+    [self.window addSubview:[self.rootViewController view]];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

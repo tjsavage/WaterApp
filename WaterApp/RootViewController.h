@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UITableViewController {
-
+@interface RootViewController : UIViewController {
+    IBOutlet UIButton *reportLeakButton;
 }
+
+@property (nonatomic, retain) UIButton *reportLeakButton;
+
+- (IBAction)doReportLeak:(UIButton *)sender; 
 
 
 @end

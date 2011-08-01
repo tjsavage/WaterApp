@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface WaterAppAppDelegate : NSObject <UIApplicationDelegate> {
-
+    UIViewController *rootViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
+@property (nonatomic, retain) UIViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end

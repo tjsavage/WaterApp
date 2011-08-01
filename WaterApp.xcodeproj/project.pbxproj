@@ -15,13 +15,15 @@
 		BF246D6813DD1BF000088198 /* WaterAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF246D6713DD1BF000088198 /* WaterAppAppDelegate.m */; };
 		BF246D6B13DD1BF000088198 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF246D6913DD1BF000088198 /* MainWindow.xib */; };
 		BF246D6E13DD1BF000088198 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF246D6D13DD1BF000088198 /* RootViewController.m */; };
-		BF246D7113DD1BF000088198 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF246D6F13DD1BF000088198 /* RootViewController.xib */; };
+		BF246D7113DD1BF000088198 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF246D6F13DD1BF000088198 /* RootView.xib */; };
 		BF246D7813DD1BF000088198 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF246D5713DD1BF000088198 /* UIKit.framework */; };
 		BF246D7913DD1BF000088198 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF246D5913DD1BF000088198 /* Foundation.framework */; };
 		BF246D7A13DD1BF000088198 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF246D5B13DD1BF000088198 /* CoreGraphics.framework */; };
 		BF246D8213DD1BF000088198 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF246D8013DD1BF000088198 /* InfoPlist.strings */; };
 		BF246D8513DD1BF000088198 /* WaterAppTests.h in Resources */ = {isa = PBXBuildFile; fileRef = BF246D8413DD1BF000088198 /* WaterAppTests.h */; };
 		BF246D8713DD1BF000088198 /* WaterAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF246D8613DD1BF000088198 /* WaterAppTests.m */; };
+		BF936D9513E63DBC008968A3 /* Leak.m in Sources */ = {isa = PBXBuildFile; fileRef = BF936D9413E63DBC008968A3 /* Leak.m */; };
+		BF936D9613E63DBC008968A3 /* Leak.m in Sources */ = {isa = PBXBuildFile; fileRef = BF936D9413E63DBC008968A3 /* Leak.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +41,24 @@
 		BF246D5713DD1BF000088198 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BF246D5913DD1BF000088198 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BF246D5B13DD1BF000088198 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BF246D5F13DD1BF000088198 /* WaterApp-Info.plist */ = {isa = PBXFileReference; path = "WaterApp-Info.plist"; sourceTree = "<group>"; };
+		BF246D5F13DD1BF000088198 /* WaterApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WaterApp-Info.plist"; sourceTree = "<group>"; };
 		BF246D6113DD1BF000088198 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BF246D6313DD1BF000088198 /* WaterApp-Prefix.pch */ = {isa = PBXFileReference; path = "WaterApp-Prefix.pch"; sourceTree = "<group>"; };
+		BF246D6313DD1BF000088198 /* WaterApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WaterApp-Prefix.pch"; sourceTree = "<group>"; };
 		BF246D6413DD1BF000088198 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BF246D6613DD1BF000088198 /* WaterAppAppDelegate.h */ = {isa = PBXFileReference; path = WaterAppAppDelegate.h; sourceTree = "<group>"; };
+		BF246D6613DD1BF000088198 /* WaterAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterAppAppDelegate.h; sourceTree = "<group>"; };
 		BF246D6713DD1BF000088198 /* WaterAppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterAppAppDelegate.m; sourceTree = "<group>"; };
 		BF246D6A13DD1BF000088198 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		BF246D6C13DD1BF000088198 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		BF246D6C13DD1BF000088198 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BF246D6D13DD1BF000088198 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		BF246D7013DD1BF000088198 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		BF246D7013DD1BF000088198 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
 		BF246D7713DD1BF000088198 /* WaterAppTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterAppTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF246D7F13DD1BF000088198 /* WaterAppTests-Info.plist */ = {isa = PBXFileReference; path = "WaterAppTests-Info.plist"; sourceTree = "<group>"; };
+		BF246D7F13DD1BF000088198 /* WaterAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WaterAppTests-Info.plist"; sourceTree = "<group>"; };
 		BF246D8113DD1BF000088198 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BF246D8313DD1BF000088198 /* WaterAppTests-Prefix.pch */ = {isa = PBXFileReference; path = "WaterAppTests-Prefix.pch"; sourceTree = "<group>"; };
+		BF246D8313DD1BF000088198 /* WaterAppTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WaterAppTests-Prefix.pch"; sourceTree = "<group>"; };
 		BF246D8413DD1BF000088198 /* WaterAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterAppTests.h; sourceTree = "<group>"; };
 		BF246D8613DD1BF000088198 /* WaterAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterAppTests.m; sourceTree = "<group>"; };
+		BF936D9313E63DBC008968A3 /* Leak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leak.h; sourceTree = "<group>"; };
+		BF936D9413E63DBC008968A3 /* Leak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Leak.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +117,13 @@
 		BF246D5D13DD1BF000088198 /* WaterApp */ = {
 			isa = PBXGroup;
 			children = (
+				BF936D9113E63D5C008968A3 /* Models */,
 				BF246D6613DD1BF000088198 /* WaterAppAppDelegate.h */,
 				BF246D6713DD1BF000088198 /* WaterAppAppDelegate.m */,
 				BF246D6913DD1BF000088198 /* MainWindow.xib */,
 				BF246D6C13DD1BF000088198 /* RootViewController.h */,
 				BF246D6D13DD1BF000088198 /* RootViewController.m */,
-				BF246D6F13DD1BF000088198 /* RootViewController.xib */,
+				BF246D6F13DD1BF000088198 /* RootView.xib */,
 				BF246D5E13DD1BF000088198 /* Supporting Files */,
 			);
 			path = WaterApp;
@@ -153,6 +158,15 @@
 				BF246D8313DD1BF000088198 /* WaterAppTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF936D9113E63D5C008968A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF936D9313E63DBC008968A3 /* Leak.h */,
+				BF936D9413E63DBC008968A3 /* Leak.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +241,7 @@
 			files = (
 				BF246D6213DD1BF000088198 /* InfoPlist.strings in Resources */,
 				BF246D6B13DD1BF000088198 /* MainWindow.xib in Resources */,
-				BF246D7113DD1BF000088198 /* RootViewController.xib in Resources */,
+				BF246D7113DD1BF000088198 /* RootView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +280,7 @@
 				BF246D6513DD1BF000088198 /* main.m in Sources */,
 				BF246D6813DD1BF000088198 /* WaterAppAppDelegate.m in Sources */,
 				BF246D6E13DD1BF000088198 /* RootViewController.m in Sources */,
+				BF936D9513E63DBC008968A3 /* Leak.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF246D8713DD1BF000088198 /* WaterAppTests.m in Sources */,
+				BF936D9613E63DBC008968A3 /* Leak.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,12 +320,12 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		BF246D6F13DD1BF000088198 /* RootViewController.xib */ = {
+		BF246D6F13DD1BF000088198 /* RootView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF246D7013DD1BF000088198 /* en */,
 			);
-			name = RootViewController.xib;
+			name = RootView.xib;
 			sourceTree = "<group>";
 		};
 		BF246D8013DD1BF000088198 /* InfoPlist.strings */ = {
@@ -446,6 +462,7 @@
 				BF246D8C13DD1BF000088198 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF246D8D13DD1BF000088198 /* Build configuration list for PBXNativeTarget "WaterAppTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +471,7 @@
 				BF246D8F13DD1BF000088198 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
