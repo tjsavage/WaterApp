@@ -7,14 +7,19 @@
 //
 
 #import "RootViewController.h"
+#import "LeakCreationController.h"
 
 @implementation RootViewController
 
-@synthesize reportLeakButton = _reportLeakButton;
+@synthesize reportLeakButton = _reportLeakButton, leakManager = _leakManager, leakCreationController = _leakCreationController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    Request *request = [[Request alloc] initWithUrl:@"dummy" parameters:nil];
+    NSArray *leakTypes = [[request resultAsDict] objectForKey:@"leakTypes"];
+    leakManager = [[LeakManager alloc] initWithLeakTypes:leakTypes];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,7 +44,9 @@
 
 - (IBAction)doReportLeak:(UIButton *)sender
 {
-    NSLog(@"Here");
+    self.leakCreationController = [[LeakCreationController alloc] initWithNibName:@"LeakCreationView" bundle:[NSBundle mainBundle]];
+    
+    [self.view addSubview:[self.leakCreationController view]];
 }
 - (void)didReceiveMemoryWarning
 {

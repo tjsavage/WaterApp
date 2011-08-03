@@ -11,4 +11,9 @@
 
 @implementation Leak
 
+@synthesize location = _location, severity = _severity, image = _image;
+@synthesize comments = _comments, leakType = _leakType;
+
+
+
 @end

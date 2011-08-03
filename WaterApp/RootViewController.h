@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Request.h"
+#import "LeakManager.h"
 
 @interface RootViewController : UIViewController {
     IBOutlet UIButton *reportLeakButton;
+    LeakManager *leakManager;
+    UIViewController *leakCreationController;
 }
 
 @property (nonatomic, retain) UIButton *reportLeakButton;
+@property (nonatomic, retain) LeakManager *leakManager;
+@property (nonatomic, retain) UIViewController *leakCreationController;
 
 - (IBAction)doReportLeak:(UIButton *)sender; 
 

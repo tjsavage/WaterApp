@@ -7,12 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import "LeakType.h"
 
 
 @interface Leak : NSObject {
-    float latitude;
-    float longitude;
-    
+    CLLocation *location;
+    LeakType *leakType;
+    int severity;
+    NSString *comments;
+    UIImage *image;
 }
+
+@property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, assign) LeakType *leakType;
+@property (nonatomic, assign) int severity;
+@property (nonatomic, retain) NSString *comments;
+@property (nonatomic, retain) UIImage *image;
 
 @end
