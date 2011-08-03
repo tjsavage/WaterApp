@@ -11,6 +11,10 @@
 #import "LeakCreationController.h"
 #import <MapKit/MKGeometry.h>
 
+@interface LeakCreationController (Private) 
+    - (void)setMapLocation:(CLLocation *)zoomLocation;
+@end
+
 @implementation LeakCreationController
 @synthesize mapView = _mapView, newLeak = _newLeak;
 
@@ -39,16 +43,26 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 37.4241667;
-    zoomLocation.longitude = -122.165;
-    
+- (void)setMapLocation:(CLLocation *)location {
+    CLLocationCoordinate2D zoomLocation = location.coordinate;
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
     
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
     
     [self.mapView setRegion:adjustedRegion animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:37.4241667 longitude:0-122.165];
+   
+    [self setMapLocation:location];
+    
+    
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    [self setMapLocation:userLocation.location];
+    
 }
 
 - (void)viewDidUnload
