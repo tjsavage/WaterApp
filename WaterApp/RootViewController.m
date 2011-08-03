@@ -18,7 +18,7 @@
     [super viewDidLoad];
     Request *request = [[Request alloc] initWithUrl:@"dummy" parameters:nil];
     NSArray *leakTypes = [[request resultAsDict] objectForKey:@"leakTypes"];
-    leakManager = [[LeakManager alloc] initWithLeakTypes:leakTypes];
+    self.leakManager = [[LeakManager alloc] initWithLeakTypes:leakTypes];
     
 }
 
@@ -44,7 +44,7 @@
 
 - (IBAction)doReportLeak:(UIButton *)sender
 {
-    self.leakCreationController = [[LeakCreationController alloc] initWithNibName:@"LeakCreationView" bundle:[NSBundle mainBundle]];
+    self.leakCreationController = [[LeakCreationController alloc] initWithNibName:@"LeakCreationView" bundle:[NSBundle mainBundle] leakManager:self.leakManager];
     
     [self.view addSubview:[self.leakCreationController view]];
 }

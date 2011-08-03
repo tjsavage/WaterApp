@@ -33,5 +33,9 @@
     return self;
 }
 
+- (Leak *)leak {
+    return [[[Leak alloc] initWithLeakType:self] autorelease];
+}
+
 
 @end

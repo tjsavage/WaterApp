@@ -8,15 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "Leak.h"
+#import "LeakManager.h"
+#import "PickerViewController.h"
 
 @interface LeakCreationController : UIViewController <MKMapViewDelegate> {
     BOOL doneInitialZoom;
     IBOutlet MKMapView *mapView;
-    Leak *newLeak;
+    
+    LeakManager *leakManager;
+    PickerViewController *leakTypePicker;
+    PickerViewController *severityPicker;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, assign) Leak *newLeak;
+@property (nonatomic, assign) LeakManager *leakManager;
+@property (nonatomic, assign) PickerViewController *severityPicker;
+@property (nonatomic, assign) PickerViewController *leakTypePicker;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil leakManager:(LeakManager *)manager;
+
+- (void)didPickLeakType:(LeakType *)leakType;
 
 @end

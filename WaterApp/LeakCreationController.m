@@ -10,19 +10,21 @@
 
 #import "LeakCreationController.h"
 #import <MapKit/MKGeometry.h>
+#import "LeakManager.h"
 
 @interface LeakCreationController (Private) 
     - (void)setMapLocation:(CLLocation *)zoomLocation;
 @end
 
 @implementation LeakCreationController
-@synthesize mapView = _mapView, newLeak = _newLeak;
+@synthesize mapView = _mapView, leakManager = _leakManager;
+@synthesize leakTypePicker = _leakTypePicker, severityPicker = _severityPicker;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil leakManager:(LeakManager *)manager
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.leakManager = manager;
     }
     return self;
 }
@@ -33,6 +35,14 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - Callbacks from Pickers
+- (void)didPickLeakType:(LeakType *)leakType {
+    self.leakManager.newLeak = [leakType leak];
+    [self.leakTypePicker.view removeFromSuperview];
+    
+//    self.severityPicker
 }
 
 #pragma mark - View lifecycle
@@ -62,7 +72,9 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     [self setMapLocation:userLocation.location];
+    leakTypePicker = [[PickerViewController alloc] initWithNibName:@"PickerView" bundle:[NSBundle mainBundle] delegate:self callback:@selector(didPickLeakType:) dataSourceDict:self.leakManager.leakTypes];
     
+    [self.view addSubview:leakTypePicker.view];
 }
 
 - (void)viewDidUnload

@@ -14,6 +14,13 @@
 @synthesize location = _location, severity = _severity, image = _image;
 @synthesize comments = _comments, leakType = _leakType;
 
-
+- initWithLeakType:(LeakType *)type {
+    self = [super init];
+    if (self) {
+        self.leakType = type;
+    }
+    
+    return self;
+}
 
 @end

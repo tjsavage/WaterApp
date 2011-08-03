@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Leak.h"
+
+@class Leak;
 
 @interface LeakType : NSObject {
     NSString *description;
@@ -21,5 +24,6 @@
 @property (nonatomic, assign) int criticalSeverity;
 
 - (id)initWithProperties:(NSDictionary *)properties;
+- (Leak *)leak;
 
 @end

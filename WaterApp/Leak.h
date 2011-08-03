@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "LeakType.h"
 
+@class LeakType;
 
 @interface Leak : NSObject {
     CLLocation *location;
@@ -20,9 +21,11 @@
 }
 
 @property (nonatomic, retain) CLLocation *location;
-@property (nonatomic, assign) LeakType *leakType;
+@property (nonatomic, retain) LeakType *leakType;
 @property (nonatomic, assign) int severity;
 @property (nonatomic, retain) NSString *comments;
 @property (nonatomic, retain) UIImage *image;
+
+- initWithLeakType:(LeakType *)leakType;
 
 @end
