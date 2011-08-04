@@ -26,7 +26,7 @@
     if (self = [super init]) {
         self.description = [properties objectForKey:@"description"];
         self.serverId = [[properties objectForKey:@"id"] intValue];
-        [self.severities addObjectsFromArray:[properties objectForKey:@"severities"]];
+        self.severities = [NSArray arrayWithArray:[properties objectForKey:@"severities"]];
         self.criticalSeverity = [[properties objectForKey:@"criticalSeverity"] intValue];
     }
     

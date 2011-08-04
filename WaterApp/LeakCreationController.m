@@ -14,17 +14,23 @@
 
 @interface LeakCreationController (Private) 
     - (void)setMapLocation:(CLLocation *)zoomLocation;
+    - (void)enableSeverity;
 @end
 
 @implementation LeakCreationController
 @synthesize mapView = _mapView, leakManager = _leakManager;
 @synthesize leakTypePicker = _leakTypePicker, severityPicker = _severityPicker;
+@synthesize leakTypeButton = _leakTypeButton, leakSeverityButton = _leakSeverityButton;
+@synthesize leakSeverityLabel = _leakSeverityLabel, leakTypeLabel = _leakTypeLabel, leakSeverityButtonLabel = _leakSeverityButtonLabel;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil leakManager:(LeakManager *)manager
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.leakManager = manager;
+       
+        self.leakSeverityButton.enabled = NO;
     }
     return self;
 }
@@ -37,12 +43,41 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - Button actions
+- (IBAction)willChooseLeakType:(id)sender {
+     self.leakTypePicker = [[PickerViewController alloc] initWithDelegate:self callback:@selector(didPickLeakType:) parentView:self.view dataSource:[self.leakManager.leakTypes allKeys]];
+    [self.leakTypePicker show];
+}
+
+- (IBAction)willChooseLeakSeverity:(id)sender {
+    [self.severityPicker show];
+}
+
 #pragma mark - Callbacks from Pickers
-- (void)didPickLeakType:(LeakType *)leakType {
-    self.leakManager.newLeak = [leakType leak];
+- (void)didPickLeakType:(NSString *)leakTypeDescription {
+    
+    self.leakManager.newLeak = [[self.leakManager.leakTypes objectForKey:leakTypeDescription] leak];
     [self.leakTypePicker.view removeFromSuperview];
     
-//    self.severityPicker
+    self.leakTypeButton.titleLabel.text = self.leakManager.newLeak.leakType.description;
+    
+    [self enableSeverity];
+    
+}
+
+- (void)didPickSeverity:(NSString *)severity {
+    
+}
+
+#pragma mark - helper private methods
+- (void)enableSeverity {
+    self.leakSeverityLabel.enabled = YES;
+    self.leakSeverityButton.enabled = YES;
+    
+     self.severityPicker = [[PickerViewController alloc] initWithDelegate:self callback:@selector(didPickSeverity:) parentView:self.view dataSource:nil];
+    self.severityPicker.dataSource = self.leakManager.newLeak.leakType.severities;
+
+    
 }
 
 #pragma mark - View lifecycle
@@ -72,9 +107,7 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
     [self setMapLocation:userLocation.location];
-    leakTypePicker = [[PickerViewController alloc] initWithNibName:@"PickerView" bundle:[NSBundle mainBundle] delegate:self callback:@selector(didPickLeakType:) dataSourceDict:self.leakManager.leakTypes];
     
-    [self.view addSubview:leakTypePicker.view];
 }
 
 - (void)viewDidUnload

@@ -8,18 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
-    NSDictionary *dataSource;
-    IBOutlet UIPickerView *pickerView;
+@interface PickerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate> {
+    NSArray *dataSource;
+    UIActionSheet *actionSheet;
+    UIPickerView *pickerView;
     SEL callback;
     UIViewController *delegate;
+    UIView *parentView;
 }
 
-@property (nonatomic, assign) NSDictionary *dataSource;
+@property (nonatomic, retain) NSArray *dataSource;
 @property (nonatomic, assign) SEL callback;
 @property (nonatomic, assign) UIViewController *delegate;
-@property (nonatomic, retain) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, assign) UIView *parentView;
+@property (nonatomic, retain) UIPickerView *pickerView;
+@property (nonatomic, retain) UIActionSheet *actionSheet;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(UIViewController *)owner callback:(SEL)selector dataSourceDict:(NSDictionary *)dataArray;
+- (id)initWithDelegate:(UIViewController *)owner callback:(SEL)selector parentView:(UIView *)view dataSource:(NSArray *)dataArray;
+- (void)dismiss;
+- (void)show;
 
 @end
