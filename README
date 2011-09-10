@@ -38,3 +38,9 @@ The json parser will be robust enough so that the response can include other fie
 		"severities" - an array of severity descriptions in order from least to most severe
 	
 	"emergencyPhone" - the phone number to call for a critically severe leak
+	
+	
+url mapping
+
+/api/leak/send
+/api/leak/list

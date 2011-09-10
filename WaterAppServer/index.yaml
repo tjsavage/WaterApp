@@ -25,3 +25,13 @@ indexes:
   properties:
   - name: __key__
     direction: desc
+
+- kind: waterapp_emergencycontact
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: waterapp_leaktype
+  properties:
+  - name: __key__
+    direction: desc
