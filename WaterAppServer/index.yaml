@@ -31,7 +31,22 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: waterapp_leakreport
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: waterapp_leaktype
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: waterapp_severity
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: waterapp_severitylist
   properties:
   - name: __key__
     direction: desc
