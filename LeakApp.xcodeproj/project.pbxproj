@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A6D4C6C14228A8B0047D02D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6D4C6B14228A8B0047D02D /* CoreLocation.framework */; };
+		8A6D4C7D1422A2EA0047D02D /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C771422A2E90047D02D /* Pin.png */; };
+		8A6D4C7E1422A2EA0047D02D /* PinDown1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C781422A2E90047D02D /* PinDown1.png */; };
+		8A6D4C7F1422A2EA0047D02D /* PinDown2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C791422A2E90047D02D /* PinDown2.png */; };
+		8A6D4C801422A2EA0047D02D /* PinDown3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C7A1422A2E90047D02D /* PinDown3.png */; };
+		8A6D4C811422A2EA0047D02D /* PinFloating.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C7B1422A2E90047D02D /* PinFloating.png */; };
+		8A6D4C821422A2EA0047D02D /* PinShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C7C1422A2E90047D02D /* PinShadow.png */; };
+		8A6D4C851422A4450047D02D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6D4C841422A4450047D02D /* QuartzCore.framework */; };
+		8A6D4C8A1422AA390047D02D /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D4C871422AA390047D02D /* DDAnnotation.m */; };
+		8A6D4C8B1422AA390047D02D /* DDAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D4C891422AA390047D02D /* DDAnnotationView.m */; };
 		8A9870401421320800F0E2BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A98703F1421320800F0E2BD /* UIKit.framework */; };
 		8A9870421421320800F0E2BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9870411421320800F0E2BD /* Foundation.framework */; };
 		8A9870441421320800F0E2BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9870431421320800F0E2BD /* CoreGraphics.framework */; };
@@ -21,9 +31,24 @@
 		8A9870701421325C00F0E2BD /* LeakManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A98706D1421325C00F0E2BD /* LeakManager.m */; };
 		8A9870741421329E00F0E2BD /* LeakCreationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9870721421329E00F0E2BD /* LeakCreationTableViewController.m */; };
 		8A9870751421329E00F0E2BD /* LeakCreationTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9870731421329E00F0E2BD /* LeakCreationTableView.xib */; };
+		8AA4F91F14228171007163D4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4F91E14228171007163D4 /* MapKit.framework */; };
+		8AA4F924142281C9007163D4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4F922142281C8007163D4 /* MapViewController.m */; };
+		8AA4F925142281C9007163D4 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA4F923142281C9007163D4 /* MapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A6D4C6B14228A8B0047D02D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8A6D4C771422A2E90047D02D /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pin.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/Pin.png"; sourceTree = "<group>"; };
+		8A6D4C781422A2E90047D02D /* PinDown1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinDown1.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinDown1.png"; sourceTree = "<group>"; };
+		8A6D4C791422A2E90047D02D /* PinDown2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinDown2.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinDown2.png"; sourceTree = "<group>"; };
+		8A6D4C7A1422A2E90047D02D /* PinDown3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinDown3.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinDown3.png"; sourceTree = "<group>"; };
+		8A6D4C7B1422A2E90047D02D /* PinFloating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinFloating.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinFloating.png"; sourceTree = "<group>"; };
+		8A6D4C7C1422A2E90047D02D /* PinShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinShadow.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinShadow.png"; sourceTree = "<group>"; };
+		8A6D4C841422A4450047D02D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8A6D4C861422AA390047D02D /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
+		8A6D4C871422AA390047D02D /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
+		8A6D4C881422AA390047D02D /* DDAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotationView.h; sourceTree = "<group>"; };
+		8A6D4C891422AA390047D02D /* DDAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotationView.m; sourceTree = "<group>"; };
 		8A98703B1421320800F0E2BD /* LeakApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeakApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A98703F1421320800F0E2BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A9870411421320800F0E2BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +74,10 @@
 		8A9870721421329E00F0E2BD /* LeakCreationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeakCreationTableViewController.m; sourceTree = "<group>"; };
 		8A9870731421329E00F0E2BD /* LeakCreationTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeakCreationTableView.xib; sourceTree = "<group>"; };
 		8A9870761421334B00F0E2BD /* LeakCreationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeakCreationDelegate.h; sourceTree = "<group>"; };
+		8AA4F91E14228171007163D4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8AA4F921142281C8007163D4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../MapViewController.h; sourceTree = "<group>"; };
+		8AA4F922142281C8007163D4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../MapViewController.m; sourceTree = "<group>"; };
+		8AA4F923142281C9007163D4 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ../MapViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6D4C851422A4450047D02D /* QuartzCore.framework in Frameworks */,
+				8A6D4C6C14228A8B0047D02D /* CoreLocation.framework in Frameworks */,
+				8AA4F91F14228171007163D4 /* MapKit.framework in Frameworks */,
 				8A9870401421320800F0E2BD /* UIKit.framework in Frameworks */,
 				8A9870421421320800F0E2BD /* Foundation.framework in Frameworks */,
 				8A9870441421320800F0E2BD /* CoreGraphics.framework in Frameworks */,
@@ -65,9 +97,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A6D4C831422A2F50047D02D /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				8A6D4C771422A2E90047D02D /* Pin.png */,
+				8A6D4C781422A2E90047D02D /* PinDown1.png */,
+				8A6D4C791422A2E90047D02D /* PinDown2.png */,
+				8A6D4C7A1422A2E90047D02D /* PinDown3.png */,
+				8A6D4C7B1422A2E90047D02D /* PinFloating.png */,
+				8A6D4C7C1422A2E90047D02D /* PinShadow.png */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
 		8A9870301421320800F0E2BD = {
 			isa = PBXGroup;
 			children = (
+				8A6D4C841422A4450047D02D /* QuartzCore.framework */,
+				8A6D4C6B14228A8B0047D02D /* CoreLocation.framework */,
+				8AA4F91E14228171007163D4 /* MapKit.framework */,
 				8A9870451421320800F0E2BD /* LeakApp */,
 				8A98703E1421320800F0E2BD /* Frameworks */,
 				8A98703C1421320800F0E2BD /* Products */,
@@ -95,6 +143,11 @@
 		8A9870451421320800F0E2BD /* LeakApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A6D4C861422AA390047D02D /* DDAnnotation.h */,
+				8A6D4C871422AA390047D02D /* DDAnnotation.m */,
+				8A6D4C881422AA390047D02D /* DDAnnotationView.h */,
+				8A6D4C891422AA390047D02D /* DDAnnotationView.m */,
+				8A6D4C831422A2F50047D02D /* Media */,
 				8A9870641421324400F0E2BD /* Models */,
 				8A9870631421323E00F0E2BD /* Server */,
 				8A98704E1421320800F0E2BD /* LeakAppAppDelegate.h */,
@@ -107,6 +160,9 @@
 				8A9870721421329E00F0E2BD /* LeakCreationTableViewController.m */,
 				8A9870731421329E00F0E2BD /* LeakCreationTableView.xib */,
 				8A9870761421334B00F0E2BD /* LeakCreationDelegate.h */,
+				8AA4F921142281C8007163D4 /* MapViewController.h */,
+				8AA4F922142281C8007163D4 /* MapViewController.m */,
+				8AA4F923142281C9007163D4 /* MapViewController.xib */,
 			);
 			path = LeakApp;
 			sourceTree = "<group>";
@@ -194,6 +250,13 @@
 				8A98704A1421320800F0E2BD /* InfoPlist.strings in Resources */,
 				8A9870531421320800F0E2BD /* MainWindow.xib in Resources */,
 				8A9870751421329E00F0E2BD /* LeakCreationTableView.xib in Resources */,
+				8AA4F925142281C9007163D4 /* MapViewController.xib in Resources */,
+				8A6D4C7D1422A2EA0047D02D /* Pin.png in Resources */,
+				8A6D4C7E1422A2EA0047D02D /* PinDown1.png in Resources */,
+				8A6D4C7F1422A2EA0047D02D /* PinDown2.png in Resources */,
+				8A6D4C801422A2EA0047D02D /* PinDown3.png in Resources */,
+				8A6D4C811422A2EA0047D02D /* PinFloating.png in Resources */,
+				8A6D4C821422A2EA0047D02D /* PinShadow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +275,9 @@
 				8A98706F1421325C00F0E2BD /* LeakType.m in Sources */,
 				8A9870701421325C00F0E2BD /* LeakManager.m in Sources */,
 				8A9870741421329E00F0E2BD /* LeakCreationTableViewController.m in Sources */,
+				8AA4F924142281C9007163D4 /* MapViewController.m in Sources */,
+				8A6D4C8A1422AA390047D02D /* DDAnnotation.m in Sources */,
+				8A6D4C8B1422AA390047D02D /* DDAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +387,7 @@
 				8A98705E1421320800F0E2BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

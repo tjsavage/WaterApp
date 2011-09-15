@@ -20,7 +20,7 @@
     UIImage *image;
 }
 
-@property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
 @property (nonatomic, retain) LeakType *leakType;
 @property (nonatomic, assign) int severity;
 @property (nonatomic, retain) NSString *comments;

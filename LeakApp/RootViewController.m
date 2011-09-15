@@ -10,11 +10,12 @@
 #import "LeakManager.h"
 #import "Request.h"
 #import "LeakCreationTableViewController.h"
+#import "MapViewController.h"
 
 @implementation RootViewController
 
 @synthesize leakManager;
-@synthesize tableViewController;
+@synthesize tableViewController, mapViewController;
 
 - (void)viewDidLoad
 {
@@ -39,6 +40,18 @@
 
 - (void)didSelectLeakSeverity:(NSString *)leakSeverity {
     self.leakManager.newLeak.severity = [self.leakManager.newLeak.leakType.severities indexOfObject:leakSeverity];
+    
+    self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
+    
+    self.mapViewController.delegate = self;
+    
+    [self.navigationController pushViewController:self.mapViewController animated:YES];
+}
+
+- (void)didSetLeakLocation:(CLLocationCoordinate2D)coordinate {
+    self.leakManager.newLeak.location = coordinate;
+    
+    NSLog(@"========> %f", self.leakManager.newLeak.location.latitude);
 }
 
 - (void)viewWillAppear:(BOOL)animated

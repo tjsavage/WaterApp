@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @protocol LeakCreationDelegate <NSObject>
 
 - (void)didSelectLeakType:(NSString *)leakType;
 - (void)didSelectLeakSeverity:(NSString *)leakSeverity;
+- (void)didSetLeakLocation:(CLLocationCoordinate2D)coordinate;
 
 @end

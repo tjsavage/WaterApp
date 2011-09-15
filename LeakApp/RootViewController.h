@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "LeakCreationDelegate.h"
 
-@class LeakManager, LeakCreationTableViewController;
+@class LeakManager, LeakCreationTableViewController, MapViewController;
 
 @interface RootViewController : UIViewController <LeakCreationDelegate>
 
 @property (nonatomic, retain) LeakManager *leakManager;
 @property (nonatomic, retain) LeakCreationTableViewController *tableViewController;
+@property (nonatomic, retain) MapViewController *mapViewController;
 
 @end
