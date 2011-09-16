@@ -10,12 +10,16 @@
 #import <MapKit/MapKit.h>
 #import "LeakCreationDelegate.h"
 
-@class LeakManager, LeakCreationTableViewController, MapViewController;
+@class LeakManager, LeakCreationTableViewController, MapViewController, LeakCreationInfoViewController;
 
-@interface RootViewController : UIViewController <LeakCreationDelegate>
+@interface RootViewController : UIViewController <LeakCreationDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, retain) LeakManager *leakManager;
 @property (nonatomic, retain) LeakCreationTableViewController *tableViewController;
 @property (nonatomic, retain) MapViewController *mapViewController;
+@property (nonatomic, retain) LeakCreationInfoViewController *infoViewController;
+@property (nonatomic, retain) UIImageView *backgroundImageView;
+
+- (void)rotateBackground;
 
 @end

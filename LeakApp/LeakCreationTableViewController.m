@@ -7,6 +7,7 @@
 //
 
 #import "LeakCreationTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LeakCreationTableViewController ()
 
@@ -69,8 +70,10 @@
     [super viewDidAppear:animated];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        [self.delegate performSelector:@selector(rotateBackground)];
+    }
     [super viewWillDisappear:animated];
 }
 
@@ -107,6 +110,20 @@
     }
     
     cell.textLabel.text = [self.tableOptions objectAtIndex:[indexPath row]];
+    cell.textLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+    backView.backgroundColor = [UIColor colorWithRed:.33 green:.33 blue:.33 alpha:.44];
+    backView.layer.cornerRadius = 6;
+    backView.layer.borderColor = [[UIColor blackColor] CGColor];
+    backView.layer.borderWidth = .5;
+    cell.backgroundView = backView;
+    
+    UIView *selectedView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+    selectedView.backgroundColor = [UIColor grayColor];
+    selectedView.layer.cornerRadius = 6;
+    
+    cell.selectedBackgroundView = selectedView;
     
     return cell;
 }

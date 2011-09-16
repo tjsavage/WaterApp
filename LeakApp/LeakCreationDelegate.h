@@ -14,5 +14,9 @@
 - (void)didSelectLeakType:(NSString *)leakType;
 - (void)didSelectLeakSeverity:(NSString *)leakSeverity;
 - (void)didSetLeakLocation:(CLLocationCoordinate2D)coordinate;
+- (void)didSetDetails:(NSString *)details;
+- (void)didSetID:(NSString *)sunetID;
+- (void)didSetPhoto:(UIImage *)image;
+- (void)submitLeak;
 
 @end

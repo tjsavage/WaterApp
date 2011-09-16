@@ -25,6 +25,7 @@
 @property (nonatomic, assign) int severity;
 @property (nonatomic, retain) NSString *comments;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) NSString *sunetID;
 
 - initWithLeakType:(LeakType *)leakType;
 

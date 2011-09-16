@@ -12,7 +12,7 @@
 @implementation Leak
 
 @synthesize location = _location, severity = _severity, image = _image;
-@synthesize comments = _comments, leakType = _leakType;
+@synthesize comments = _comments, leakType = _leakType, sunetID = _sunetID;
 
 - initWithLeakType:(LeakType *)type {
     self = [super init];
@@ -21,6 +21,16 @@
     }
     
     return self;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Leak: { type: %@, severity: %@, location: %f %f, comments: %@, sunetid: %@}",
+            self.leakType,
+            [self.leakType.severities objectAtIndex:self.severity],
+            self.location.latitude,
+            self.location.longitude,
+            self.comments,
+            self.sunetID];
 }
 
 @end
