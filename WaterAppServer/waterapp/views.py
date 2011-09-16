@@ -1,11 +1,20 @@
 from django.template import Context, loader
 from django.http import HttpResponse
-from waterapp.models import LeakReport
+from waterapp.models import LeakReport, EmergencyContact, LeakType
 
 from django.core import serializers
 
 def list(request):
-	return HttpResponse("hello world")
+	try:
+		data = []
+		for next in LeakType.objects.all():
+			data.append(next)
+		data.append(EmergencyContact.objects.get())
+		data = serializers.serialize("json", data, use_natural_keys=True, fields=('description', 'low', 'mid', 'high', 'critical_severity', 'phone_number', 'email'))
+		response = HttpResponse(content = data, status=200)
+	except:
+		response = HttpResponse(status=503)
+	return response
 	
 def recieve(request):
 	try:

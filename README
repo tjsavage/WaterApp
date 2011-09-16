@@ -1,44 +1,44 @@
 Server Information:
 
-The server should repond to some initial request for data with a json object containing at least something like this:
-
-{
-    "leakTypes": [
-        {
-            "description": "Broken Sprinkler",
-            "id": "1",
-            "criticalSeverity": "2",
-            "severities": [
-                "Minor",
-                "Significant",
-                "Gushing"
-            ]
-        },
-        {
-            "description": "Leaky Faucet",
-            "id": "2",
-            "criticalSeverity": "1",
-            "severities": [
-                "Dripping",
-                "Trickling",
-                "Pouring"
-            ]
-        }
-    ],
-	"emergencyPhone" : "16505551234"
-}
-
-The json parser will be robust enough so that the response can include other fields, but it needs at least that "leakTypes" structure, with the same layout of arrays, objects, and strings:
+	The server should repond to some initial request for data with a json object containing at least something like this:
 	
-	"leakTypes" - an array of LeakType objects
-	LeakType Object:
-		"description" - the description
-		"id" - the corresponding id (primary key) on the server for the leaktype
-		"criticalSeverity" - the index into the "severities" array at which the app should start showing a popup to call.
-		"severities" - an array of severity descriptions in order from least to most severe
+	{
+		"leakTypes": [
+			{
+				"description": "Broken Sprinkler",
+				"id": "1",
+				"criticalSeverity": "2",
+				"severities": [
+					"Minor",
+					"Significant",
+					"Gushing"
+				]
+			},
+			{
+				"description": "Leaky Faucet",
+				"id": "2",
+				"criticalSeverity": "1",
+				"severities": [
+					"Dripping",
+					"Trickling",
+					"Pouring"
+				]
+			}
+		],
+		"emergencyPhone" : "16505551234"
+	}
 	
-	"emergencyPhone" - the phone number to call for a critically severe leak
-	
+	The json parser will be robust enough so that the response can include other fields, but it needs at least that "leakTypes" structure, with the same layout of arrays, objects, and strings:
+		
+		"leakTypes" - an array of LeakType objects
+		LeakType Object:
+			"description" - the description
+			"id" - the corresponding id (primary key) on the server for the leaktype
+			"criticalSeverity" - the index into the "severities" array at which the app should start showing a popup to call.
+			"severities" - an array of severity descriptions in order from least to most severe
+		
+		"emergencyPhone" - the phone number to call for a critically severe leak
+		
 	
 url mapping
 
