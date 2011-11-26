@@ -9,13 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "LeakCreationDelegate.h"
 
-@interface LeakCreationInfoViewController : UIViewController
+@interface LeakCreationInfoViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, assign) id<LeakCreationDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UITextField *sunetIdField;
 @property (nonatomic, retain) IBOutlet UITextField *infoTextField;
+@property (nonatomic, retain) UIImagePickerController *pickerController;
+@property (nonatomic, retain) UIImage *image;
 
 - (IBAction)didTapTakePhoto;
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
 - (IBAction)submit;
 
 @end

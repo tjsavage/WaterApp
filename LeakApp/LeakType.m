@@ -10,7 +10,7 @@
 
 @implementation LeakType
 
-@synthesize description = _description, serverId = _serverId, severities = _severities, criticalSeverity = _criticalSeverity;
+@synthesize description = _description, serverId = _serverId, severities = _severities, criticalSeverity = _criticalSeverity, category = _category;
 
 - (id)init
 {
@@ -24,10 +24,12 @@
 
 - (id)initWithProperties:(NSDictionary *)properties {
     if (self = [super init]) {
+        NSLog(@"PROPERTIES: %@", properties);
         self.description = [properties objectForKey:@"description"];
-        self.serverId = [[properties objectForKey:@"id"] intValue];
-        self.severities = [NSArray arrayWithArray:[properties objectForKey:@"severities"]];
-        self.criticalSeverity = [[properties objectForKey:@"criticalSeverity"] intValue];
+        self.category = [properties objectForKey:@"category"];
+        NSDictionary *severities = [properties objectForKey:@"severities"];
+        self.severities = [NSArray arrayWithObjects:[severities objectForKey:@"high"], [severities objectForKey:@"mid"], [severities objectForKey:@"low"], nil];
+        self.criticalSeverity = [[properties objectForKey:@"critical_severity"] intValue];
     }
     
     return self;

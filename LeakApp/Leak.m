@@ -24,7 +24,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Leak: { type: %@, severity: %@, location: %f %f, comments: %@, sunetid: %@}",
+    return [NSString stringWithFormat:@"'leak': { 'type': '%@', 'severity': '%@', 'latitude': '%f', 'longitude': '%f' 'comments': '%@', 'sunetid': '%@'}",
             self.leakType,
             [self.leakType.severities objectAtIndex:self.severity],
             self.location.latitude,

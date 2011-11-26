@@ -10,7 +10,12 @@
 
 @interface Request : NSObject
 
--(id)initWithUrl:(NSString *)url parameters:(NSDictionary *)params;
+@property (nonatomic, retain) NSURLRequest *urlRequest;
+@property (nonatomic, retain) NSURLConnection *urlConnection;
+@property (nonatomic, retain) NSMutableData *data;
+@property (nonatomic, retain) id delegate;
+
+-(id)initWithUrl:(NSString *)url parameters:(NSDictionary *)params delegate:(id)del;
 -(NSDictionary *)resultAsDict;
 
 @end

@@ -12,6 +12,7 @@
 
 @synthesize delegate = _delegate;
 @synthesize infoTextField = _infoTextField, sunetIdField = _sunetIdField;
+@synthesize pickerController = _pickerController, image = _image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,12 +32,29 @@
 }
 
 - (IBAction)didTapTakePhoto {
+    self.pickerController = [[UIImagePickerController alloc] init];
+    self.pickerController.delegate = self;
+    self.pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentModalViewController:self.pickerController animated:YES];
+}
 
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo {
+    [picker dismissModalViewControllerAnimated:YES];
+    self.image = image;
+    self.pickerController.view.hidden = YES;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)submit {
     [self.delegate didSetDetails:self.infoTextField.text];
     [self.delegate didSetID:self.sunetIdField.text];
+    [self.delegate didSetPhoto:self.image];
     [self.delegate submitLeak];
 }
 

@@ -7,8 +7,12 @@
 //
 
 #import "Request.h"
+#import "SBJson.h"
 
 @implementation Request
+
+@synthesize urlRequest = _urlRequest, urlConnection = _urlConnection, data = _data;
+@synthesize delegate = _delegate;
 
 - (id)init
 {
@@ -20,29 +24,36 @@
     return self;
 }
 
--(id)initWithUrl:(NSString *)url parameters:(NSDictionary *)params {
+-(id)initWithUrl:(NSString *)url parameters:(NSDictionary *)params delegate:(id)del {
     self = [super init];
-    
+    self.urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    self.urlConnection = [[NSURLConnection alloc] initWithRequest:self.urlRequest delegate:self startImmediately:YES];
+    self.data = [[NSMutableData data] retain];
+    self.delegate = del;
     return [self autorelease];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [self.data setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.data appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    [self.delegate performSelector:@selector(requestDidFinish:) withObject:self];
+}
 
 - (NSDictionary *)resultAsDict {
-    /* Faked dictionary */
-    NSMutableDictionary *brokenSprinklerType = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                @"Broken Sprinkler", @"description",
-                                                [NSArray arrayWithObjects:@"Minor", @"Significant", @"Gushing", nil],@"severities",
-                                                @"1", @"id", 
-                                                @"2", @"criticalSeverity", nil];
-    NSMutableDictionary *leakyFaucetType = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                @"Leaky Faucet", @"description",
-                                                [NSArray arrayWithObjects:@"Dripping", @"Trickling", @"Pouring", nil],@"severities",
-                                                @"2", @"id", 
-                                                @"1", @"criticalSeverity", nil];
-                                                
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *parsedData = [parser objectWithData:self.data];
+    NSLog(@"-=====> data: %@", parsedData);
+    
+    NSMutableArray *leakTypes = [[NSMutableArray alloc] initWithArray:[parsedData objectForKey:@"leaks"]];
    
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-             [NSArray arrayWithObjects:brokenSprinklerType, leakyFaucetType, nil], @"leakTypes", nil];
+             leakTypes, @"leakTypes", nil];
 }
 
 @end

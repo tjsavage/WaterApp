@@ -17,6 +17,7 @@
 @property (nonatomic, assign) int serverId;
 @property (nonatomic, retain) NSMutableArray *severities;
 @property (nonatomic, assign) int criticalSeverity;
+@property (nonatomic, retain) NSString *category;
 
 - (id)initWithProperties:(NSDictionary *)properties;
 - (Leak *)leak;
