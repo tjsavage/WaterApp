@@ -13,12 +13,13 @@
 #import "LeakCreationTableViewController.h"
 #import "MapViewController.h"
 #import "LeakCreationInfoViewController.h"
+#import "LeakCreatedViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ASIFormDataRequest.h"
 #import "ASINetworkQueue.h"
 
-#define POST_URL @"http://10.0.1.17:8080/waterapp/api/leak/report/"
-#define GET_URL @"http://10.0.1.17:8080/waterapp/api/leak/list/"
+#define POST_URL @"http://stanfordwaterapp.appspot.com/waterapp/api/leak/report/"
+#define GET_URL @"http://stanfordwaterapp.appspot.com/waterapp/api/leak/list/"
 
 @interface RootViewController ()
 
@@ -63,6 +64,7 @@
 
 - (void)requestDidFinish:(Request *)request {
     self.leakManager = [[LeakManager alloc] initWithLeakTypes:[request.resultAsDict objectForKey:@"leakTypes"]];
+    [self.leakManager setEmergencyContactFromDict:[request.resultAsDict objectForKey:@"emergency_contact"]];
     [self.loadingViewController makeReady];
 }
 
@@ -90,11 +92,20 @@
 - (void)didSelectLeakSeverity:(NSString *)leakSeverity {
     self.leakManager.newLeak.severity = [self.leakManager.newLeak.leakType.severities indexOfObject:leakSeverity];
     
+    NSLog(@"Severity: %d, Critical: %d", self.leakManager.newLeak.severity, self.leakManager.newLeak.leakType.criticalSeverity);
+    
+    if (self.leakManager.newLeak.severity >= self.leakManager.newLeak.leakType.criticalSeverity) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Report the leak!" message:[NSString stringWithFormat:@"You've indicated it's a pretty severe leak. Please call %@ and report it immediately!", self.leakManager.emergencyPhone] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call", nil];
+        [alert show];
+        [alert release];
+    }
+        
     self.mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:[NSBundle mainBundle]];
     self.mapViewController.title = @"Leak Location";
     
     self.mapViewController.delegate = self;
     [self.navigationController pushViewController:self.mapViewController animated:YES];
+
 }
 
 - (void)didSetLeakLocation:(CLLocationCoordinate2D)coordinate {
@@ -122,6 +133,8 @@
 
 - (void) postRequestDidFinish {
     NSLog(@"=======> Posted Request");
+    UIViewController *createdViewController = [[LeakCreatedViewController alloc] initWithNibName:@"LeakCreatedViewController" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:createdViewController animated:YES];
 }
 
 - (void)submitLeak {
@@ -149,6 +162,20 @@
     [networkQueue addOperation:request];
     
     [networkQueue go];
+}
+
+#pragma mark Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        UIDevice *device = [UIDevice currentDevice];
+        if ([[device model] isEqualToString:@"iPhone"] ) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.leakManager.emergencyPhone]]];
+        } else {
+            UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [Notpermitted show];
+            [Notpermitted release];
+        }
+    }
 }
 
 

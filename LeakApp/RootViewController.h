@@ -12,7 +12,7 @@
 
 @class LeakManager, LeakCreationTableViewController, MapViewController, LeakCreationInfoViewController, LoadingViewController, Request;
 
-@interface RootViewController : UIViewController <LeakCreationDelegate, UINavigationControllerDelegate>
+@interface RootViewController : UIViewController <LeakCreationDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) LeakManager *leakManager;
 @property (nonatomic, retain) LoadingViewController *loadingViewController;

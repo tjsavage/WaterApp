@@ -20,6 +20,8 @@
 		8A43C69214806A0C001975BD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A43C69114806A0C001975BD /* MobileCoreServices.framework */; };
 		8A43C69514806A22001975BD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A43C69414806A22001975BD /* libz.dylib */; };
 		8A43C69714806AC3001975BD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A43C69614806AC3001975BD /* CFNetwork.framework */; };
+		8A68E08014844B38006C505D /* LeakCreatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A68E07E14844B38006C505D /* LeakCreatedViewController.m */; };
+		8A68E08114844B38006C505D /* LeakCreatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A68E07F14844B38006C505D /* LeakCreatedViewController.xib */; };
 		8A6D4C6C14228A8B0047D02D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6D4C6B14228A8B0047D02D /* CoreLocation.framework */; };
 		8A6D4C7D1422A2EA0047D02D /* Pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C771422A2E90047D02D /* Pin.png */; };
 		8A6D4C7E1422A2EA0047D02D /* PinDown1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6D4C781422A2E90047D02D /* PinDown1.png */; };
@@ -99,6 +101,9 @@
 		8A43C69314806A16001975BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8A43C69414806A22001975BD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8A43C69614806AC3001975BD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8A68E07D14844B37006C505D /* LeakCreatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeakCreatedViewController.h; sourceTree = "<group>"; };
+		8A68E07E14844B38006C505D /* LeakCreatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeakCreatedViewController.m; sourceTree = "<group>"; };
+		8A68E07F14844B38006C505D /* LeakCreatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeakCreatedViewController.xib; sourceTree = "<group>"; };
 		8A6D4C6B14228A8B0047D02D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8A6D4C771422A2E90047D02D /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pin.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/Pin.png"; sourceTree = "<group>"; };
 		8A6D4C781422A2E90047D02D /* PinDown1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinDown1.png; path = "../../../../Downloads/digdog-MapKitDragAndDrop-fe8441a/PinDown1.png"; sourceTree = "<group>"; };
@@ -353,6 +358,9 @@
 				8A9870711421329E00F0E2BD /* LeakCreationTableViewController.h */,
 				8A9870721421329E00F0E2BD /* LeakCreationTableViewController.m */,
 				8A9870731421329E00F0E2BD /* LeakCreationTableView.xib */,
+				8A68E07D14844B37006C505D /* LeakCreatedViewController.h */,
+				8A68E07E14844B38006C505D /* LeakCreatedViewController.m */,
+				8A68E07F14844B38006C505D /* LeakCreatedViewController.xib */,
 				8A9870761421334B00F0E2BD /* LeakCreationDelegate.h */,
 				8A6D4C8C1422BA7F0047D02D /* LeakCreationInfoViewController.h */,
 				8A6D4C8D1422BA7F0047D02D /* LeakCreationInfoViewController.m */,
@@ -459,6 +467,7 @@
 				8A6D4CA11423B4150047D02D /* Background4.png in Resources */,
 				8A6D4CA21423B4150047D02D /* Background5.png in Resources */,
 				8A8D015E144CF21900670EC9 /* LoadingViewController.xib in Resources */,
+				8A68E08114844B38006C505D /* LeakCreatedViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +512,7 @@
 				8A43C68A148069C2001975BD /* ASIInputStream.m in Sources */,
 				8A43C68B148069C2001975BD /* ASINetworkQueue.m in Sources */,
 				8A43C68E148069CE001975BD /* Reachability.m in Sources */,
+				8A68E08014844B38006C505D /* LeakCreatedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

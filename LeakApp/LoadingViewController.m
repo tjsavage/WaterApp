@@ -12,7 +12,7 @@
 
 @implementation LoadingViewController
 
-@synthesize spinner, delegate, button;
+@synthesize spinner, delegate, button, loadingLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id)del
 {
@@ -57,6 +57,7 @@
 - (void)makeReady {
     [self.spinner stopAnimating];
     [self.spinner removeFromSuperview];
+    self.loadingLabel.hidden = YES;
     self.view.alpha = 1;
     self.button.hidden = NO;
 }

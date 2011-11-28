@@ -14,7 +14,7 @@
 
 @implementation LeakManager
 
-@synthesize newLeak = _newLeak, leakTypes = _leakTypes;
+@synthesize newLeak = _newLeak, leakTypes = _leakTypes, emergencyPhone = _emergencyPhone, emergencyEmail = _emergencyEmail;
 
 - (id)init
 {
@@ -37,6 +37,12 @@
     }
     
     return [self autorelease];
+}
+
+- (void)setEmergencyContactFromDict:(NSDictionary *)emergencyDict {
+    NSLog(@"Dict: %@", emergencyDict);
+    self.emergencyPhone = [emergencyDict objectForKey:@"phone_number"];
+    self.emergencyEmail = [emergencyDict objectForKey:@"email"];
 }
 
 @end

@@ -16,6 +16,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *infoTextField;
 @property (nonatomic, retain) UIImagePickerController *pickerController;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *submittingActivityIndicator;
 
 - (IBAction)didTapTakePhoto;
 - (void)imagePickerController:(UIImagePickerController *)picker

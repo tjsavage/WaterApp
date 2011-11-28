@@ -28,7 +28,7 @@
         self.description = [properties objectForKey:@"description"];
         self.category = [properties objectForKey:@"category"];
         NSDictionary *severities = [properties objectForKey:@"severities"];
-        self.severities = [NSArray arrayWithObjects:[severities objectForKey:@"high"], [severities objectForKey:@"mid"], [severities objectForKey:@"low"], nil];
+        self.severities = [NSArray arrayWithObjects:[severities objectForKey:@"low"], [severities objectForKey:@"mid"], [severities objectForKey:@"high"], nil];
         self.criticalSeverity = [[properties objectForKey:@"critical_severity"] intValue];
     }
     

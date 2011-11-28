@@ -16,7 +16,10 @@
 
 @property (nonatomic, retain) NSMutableDictionary *leakTypes;
 @property (nonatomic, retain) Leak *newLeak;
+@property (nonatomic, retain) NSString *emergencyPhone;
+@property (nonatomic, retain) NSString *emergencyEmail;
 
 - (id)initWithLeakTypes:(NSArray *)leakTypesDicts;
+- (void)setEmergencyContactFromDict:(NSDictionary *)emergencyDict;
 
 @end

@@ -12,13 +12,13 @@
 
 @synthesize delegate = _delegate;
 @synthesize infoTextField = _infoTextField, sunetIdField = _sunetIdField;
-@synthesize pickerController = _pickerController, image = _image;
+@synthesize pickerController = _pickerController, image = _image, submittingActivityIndicator = _submittingActivityIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.submittingActivityIndicator.hidden = YES;
     }
     return self;
 }
@@ -52,6 +52,8 @@
 }
 
 - (IBAction)submit {
+    self.submittingActivityIndicator.hidden = NO;
+    [self.submittingActivityIndicator startAnimating]; 
     [self.delegate didSetDetails:self.infoTextField.text];
     [self.delegate didSetID:self.sunetIdField.text];
     [self.delegate didSetPhoto:self.image];
@@ -83,6 +85,7 @@
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
         [self.delegate performSelector:@selector(rotateBackground)];
     }
+    self.submittingActivityIndicator.hidden = YES;
     [super viewWillDisappear:animated];
 }
 

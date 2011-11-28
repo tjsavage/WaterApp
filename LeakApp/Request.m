@@ -51,9 +51,11 @@
     NSLog(@"-=====> data: %@", parsedData);
     
     NSMutableArray *leakTypes = [[NSMutableArray alloc] initWithArray:[parsedData objectForKey:@"leaks"]];
+    NSMutableDictionary *emergencyContact = [[NSMutableDictionary alloc] initWithDictionary:[parsedData objectForKey:@"emergency_contact"]];
+
    
     return [NSMutableDictionary dictionaryWithObjectsAndKeys:
-             leakTypes, @"leakTypes", nil];
+             leakTypes, @"leakTypes", emergencyContact, @"emergency_contact", nil];
 }
 
 @end
