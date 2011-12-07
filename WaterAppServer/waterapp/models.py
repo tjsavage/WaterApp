@@ -3,12 +3,18 @@ from django.db import models
 # Create your models here.
 
 class LeakType(models.Model):
+	CATEGORY_CHOICES = (
+		('cat one', 'one'),
+		('cat two', 'two')
+	)
+	
+	category = models.CharField(max_length=200, choices = CATEGORY_CHOICES)
+	
 	description = models.CharField(max_length=200)
 	critical_severity = models.IntegerField()
-	#severity_list = models.ForeignKey('SeverityList')
-	low = models.ForeignKey('Severity')
-	mid = models.ForeignKey('Severity')
-	high = models.ForeignKey('Severity')
+	low = models.ForeignKey(Severity, related_name='low')
+	#mid = models.ForeignKey(Severity, related_name='mid')
+	#high = models.ForeignKey(Severity, related_name='high')
 	
 	
 class EmergencyContact(models.Model):
@@ -19,11 +25,9 @@ class EmergencyContact(models.Model):
 class Severity(models.Model):
 	description = models.CharField(max_length=50) 
 	
-	def natural_key(self):
-		return (self.description)
 	
 class LeakReport(models.Model):
-	leak_type = models.IntegerField()
+	leak_id = models.IntegerField()
 	severity = models.IntegerField()
 	report_time = models.DateTimeField(auto_now_add=True)
 	latitude = models.FloatField()
