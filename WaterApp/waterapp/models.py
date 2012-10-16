@@ -3,12 +3,6 @@ from django.db import models
 # Create your models here.
 
 class LeakType(models.Model):
-	CATEGORY_CHOICES = (
-		('cat one', 'one'),
-		('cat two', 'two')
-	)
-	
-	category = models.CharField(max_length=200, choices = CATEGORY_CHOICES)
 	
 	description = models.CharField(max_length=200)
 	critical_severity = models.IntegerField()
@@ -16,10 +10,14 @@ class LeakType(models.Model):
 	mid = models.CharField(max_length=50) 
 	high = models.CharField(max_length=50) 
 	
+	def __unicode__(self):
+	    return self.description
+	
 	
 class EmergencyContact(models.Model):
 	phone_number = models.CharField(max_length=10)
 	email = models.CharField(max_length=30)
+	
 	
 class LeakReport(models.Model):
 	leak = models.CharField(max_length=200)
@@ -30,6 +28,8 @@ class LeakReport(models.Model):
 	comments = models.CharField(max_length=200)
 	sunet_id = models.CharField(max_length=15)
 	pic = models.TextField()
+	
+	
 	
 	
 	

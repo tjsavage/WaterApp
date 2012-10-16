@@ -13,7 +13,7 @@ from datetime import datetime
 import os
 
 os.environ['TZ'] = 'America/Los_Angeles'
-PSTOFFSET = -8
+PSTOFFSET = -8 * 60
 
 from waterapp.models import LeakReport, EmergencyContact, LeakType
 
@@ -78,21 +78,21 @@ def recieve(request):
 	l.longitude = params['longitude']
 	l.comments = params['comments']
 	l.sunet_id = params['sunetID']
-	l.report_time = datetime.now(tzinfo=tzinfo.FixedOffset(PSTOFFSET, 'PST'))
+	t = tzinfo.FixedOffset(PSTOFFSET)
+	l.report_time = datetime.now(tz=t)
 	
 	
 	
-	
-	pic = request.FILES['file'].read()
-	p = leakImage()
-	logging.debug('pic: ' + str(pic))
-	m = images.resize(pic, 480)
-	logging.debug('m: ' + str(m))
-	p.picture = db.Blob(m)
-	logging.debug('leakImage: ' + str(p.picture))
-	s = p.put()
-	l.pic = s.id()
-	
+	try:
+	    pic = request.FILES['file'].read()
+	    p = leakImage()
+	    logging.debug('pic: ' + str(pic))
+	    m = images.resize(pic, 480)
+	    p.picture = db.Blob(m)
+	    s = p.put()
+	    l.pic = s.id()
+	except:
+	    pass
 	
 	l.save()
 	#return HttpResponse(content=l.report_time.strftime('%I:%M %B %d, %Y'))
@@ -113,7 +113,7 @@ def recieve(request):
 		at 
 	
 		"""
-		part4 = "http://maps.google.com/?ll=" + str(l.latitude) + "," + str(l.longitude) 
+		part4 = "http://maps.google.com/?q=" + str(l.latitude) + "," + str(l.longitude) + "&ll=" + str(l.latitude) + "," + str(l.longitude)+'&z=25'
 		part5 = """ 
 	
 		On
