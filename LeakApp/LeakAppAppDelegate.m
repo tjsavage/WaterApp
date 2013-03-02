@@ -7,6 +7,7 @@
 //
 
 #import "LeakAppAppDelegate.h"
+#import "RootViewController.h"
 
 @implementation LeakAppAppDelegate
 
@@ -17,7 +18,7 @@
 {
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    [self.window addSubview:self.navigationController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -64,7 +65,6 @@
 - (void)dealloc
 {
     [_window release];
-    [_navigationController release];
     [super dealloc];
 }
 

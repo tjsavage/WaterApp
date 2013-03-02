@@ -31,6 +31,7 @@
 
 @implementation RootViewController
 
+
 @synthesize leakManager;
 @synthesize tableViewController, mapViewController, infoViewController, loadingViewController;
 @synthesize backgroundImageView;
@@ -39,15 +40,20 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"Hi");
     [super viewDidLoad];
     self.settingsRequest = [[Request alloc] initWithUrl:GET_URL parameters:nil delegate:self];
+     self.loadingViewController = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:[NSBundle mainBundle] delegate:self];
     self.navigationController.delegate = self;
+    self.loadingViewController.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = YES;
+    [self.navigationController pushViewController:self.loadingViewController animated:YES];
+    
     self.backgroundImageNumber = 0;
     self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Backgound0"]];
     [self rotateBackground];
     
-    self.loadingViewController = [[LoadingViewController alloc] initWithNibName:@"LoadingViewController" bundle:[NSBundle mainBundle] delegate:self];
-    [self.navigationController pushViewController:self.loadingViewController animated:NO];
+   
 }
 
 - (void)rotateBackground {
@@ -64,7 +70,9 @@
 
 - (void)requestDidFinish:(Request *)request {
     self.leakManager = [[LeakManager alloc] initWithLeakTypes:[request.resultAsDict objectForKey:@"leakTypes"]];
-    [self.leakManager setEmergencyContactFromDict:[request.resultAsDict objectForKey:@"emergency_contact"]];
+    if ([request.resultAsDict objectForKey:@"emergency_contact"] != nil) {
+        [self.leakManager setEmergencyContactFromDict:[request.resultAsDict objectForKey:@"emergency_contact"]];
+    }
     [self.loadingViewController makeReady];
 }
 
@@ -94,7 +102,7 @@
     
     NSLog(@"Severity: %d, Critical: %d", self.leakManager.newLeak.severity, self.leakManager.newLeak.leakType.criticalSeverity);
     
-    if (self.leakManager.newLeak.severity >= self.leakManager.newLeak.leakType.criticalSeverity) {
+    if (self.leakManager.newLeak.severity >= self.leakManager.newLeak.leakType.criticalSeverity && self.leakManager.emergencyPhone != nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Report the leak!" message:[NSString stringWithFormat:@"You've indicated it's a pretty severe leak. Please call %@ and report it immediately!", self.leakManager.emergencyPhone] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Call", nil];
         [alert show];
         [alert release];
@@ -147,12 +155,12 @@
     NSURL *url = [NSURL URLWithString:POST_URL];
     ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:url] autorelease];
     
-    NSData *imageData = UIImagePNGRepresentation(self.leakManager.newLeak.image);
+    NSData *imageData = UIImageJPEGRepresentation(self.leakManager.newLeak.image, 0.4f);
     
     [request setPostValue:self.leakManager.newLeak.leakType.description forKey:@"leakType"];
     [request setPostValue:[self.leakManager.newLeak.leakType.severities objectAtIndex:leakManager.newLeak.severity] forKey:@"severity"];
-    [request setPostValue:[NSString stringWithFormat:@"%d", self.leakManager.newLeak.location.latitude] forKey:@"latitude"];
-    [request setPostValue:[NSString stringWithFormat:@"%d", self.leakManager.newLeak.location.longitude] forKey:@"longitude"];
+    [request setPostValue:[NSString stringWithFormat:@"%f", self.leakManager.newLeak.location.latitude] forKey:@"latitude"];
+    [request setPostValue:[NSString stringWithFormat:@"%f", self.leakManager.newLeak.location.longitude] forKey:@"longitude"];
     [request setPostValue:self.leakManager.newLeak.comments forKey:@"comments"];
     [request setPostValue:self.leakManager.newLeak.sunetID forKey:@"sunetID"];
     if(imageData != nil){
